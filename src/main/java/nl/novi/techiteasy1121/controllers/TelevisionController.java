@@ -42,7 +42,7 @@ public class TelevisionController {
 
     }
 
-    @GetMapping("/televisions?branch={branch}")
+    @GetMapping("/televisions?brand={brand}")
     public ResponseEntity<Object> getAllTelevisions(@RequestParam String brand) {
 
         return ResponseEntity.ok();
