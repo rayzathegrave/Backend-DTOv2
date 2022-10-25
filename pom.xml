@@ -18,13 +18,20 @@
 <!--        We gebruiken hier versie 17, maar versie 11 is ook goed. Zolang het maar een LTS versie is-->
         <java.version>17</java.version>
     </properties>
-<!--    Dit is de eerste dependency die we nodig hebben. Met deze dependency kunnen we RestControllers maken-->
+
     <dependencies>
+<!--            Dit is de eerste dependency die we nodig hebben. Met deze dependency kunnen we RestControllers maken-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+<!--        Deze dependency is voor de test die al standaard in de test folder staat. Hier gaan we later nog meer mee doen-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 <!--    Deze plugin werkt niet altijd voor iedereen. Als deze plugin niet herkent wordt op jou pc, dan mag je dat gewoon negeren-->
