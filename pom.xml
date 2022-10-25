@@ -10,31 +10,24 @@
     </parent>
     <groupId>nl.novi</groupId>
     <artifactId>TechItEasy-11-21</artifactId>
+<!--    SNAPSHOT betekent "work in progress". Dit hoor je bij het inleveren van je eindopdracht aangepast te hebben-->
     <version>0.0.1-SNAPSHOT</version>
     <name>TechItEasy-11-21</name>
     <description>TechItEasy-11-21</description>
     <properties>
-        <java.version>11</java.version>
+<!--        We gebruiken hier versie 17, maar versie 11 is ook goed. Zolang het maar een LTS versie is-->
+        <java.version>17</java.version>
     </properties>
+<!--    Dit is de eerste dependency die we nodig hebben. Met deze dependency kunnen we RestControllers maken-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
+<!--    Deze plugin werkt niet altijd voor iedereen. Als deze plugin niet herkent wordt op jou pc, dan mag je dat gewoon negeren-->
     <build>
         <plugins>
             <plugin>
