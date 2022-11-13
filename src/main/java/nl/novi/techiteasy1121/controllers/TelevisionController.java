@@ -16,10 +16,10 @@ public class TelevisionController {
     }
 
     @GetMapping("/televisions/{id}")
-    public ResponseEntity<Object> getTelevision() {
+    public ResponseEntity<Object> getTelevision(@PathVariable("id") int id) {
 
         // return een String met een 200 status
-        return ResponseEntity.ok("television");
+        return ResponseEntity.ok("television with id: " + id);
 
     }
 
