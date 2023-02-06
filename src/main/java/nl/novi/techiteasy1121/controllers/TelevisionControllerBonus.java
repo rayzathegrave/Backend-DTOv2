@@ -2,6 +2,7 @@ package nl.novi.techiteasy1121.controllers;
 
 
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
+import nl.novi.techiteasy1121.exceptions.TelevisionNameTooLongException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,10 +38,15 @@ public class TelevisionControllerBonus {
 
     @PostMapping("/televisions")
     public ResponseEntity<Object> addTelevision(@RequestBody String television) {
-        // Voeg de televisie uit de parameter toe aan de lijst
-        televisionDatabase.add(television);
-        // Return de televisie uit de parameter met een 201 status
-        return ResponseEntity.created(null).body(television);
+        // Bonus bonus: check voor 20 letter:
+        if(television.length()>20){
+            throw new TelevisionNameTooLongException("Televisienaam is te lang");
+        } else {
+            // Voeg de televisie uit de parameter toe aan de lijst
+            televisionDatabase.add(television);
+            // Return de televisie uit de parameter met een 201 status
+            return ResponseEntity.created(null).body(television);
+        }
 
     }
 

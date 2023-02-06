@@ -1,6 +1,7 @@
 package nl.novi.techiteasy1121.controllers;
 
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
+import nl.novi.techiteasy1121.exceptions.TelevisionNameTooLongException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,6 +24,11 @@ public class ExceptionController {
 
         return new ResponseEntity<>("Dit id staat niet in de database", HttpStatus.NOT_FOUND);
 
+    }
+
+    @ExceptionHandler(value = TelevisionNameTooLongException.class)
+    public ResponseEntity<String> exception(TelevisionNameTooLongException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 
