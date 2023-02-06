@@ -1,6 +1,7 @@
 package nl.novi.techiteasy1121.controllers;
 
 
+import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,10 +55,16 @@ public class TelevisionControllerBonus {
 
     @PutMapping("/televisions/{id}")
     public ResponseEntity<Object> updateTelevision(@PathVariable int id, @RequestBody String television) {
-        // Vervang de waarde op index(id) met de television uit de parameter
-        televisionDatabase.set(id, television);
-        // Return een 204 status
-        return ResponseEntity.noContent().build();
+        // In de vorige methodes hebben we impliciet gebruik gemaakt van "IndexOUtOfBoundsException" als het id groter was dan de lijst.
+        // In deze methode checken we daar expliciet voor en gooien we een custom exception op.
+        if(televisionDatabase.isEmpty() || id>televisionDatabase.size()){
+            throw new RecordNotFoundException("Record met id: " + id + " niet gevonden in de database.");
+        } else {
+            // Vervang de waarde op index(id) met de television uit de parameter
+            televisionDatabase.set(id, television);
+            // Return een 204 status
+            return ResponseEntity.noContent().build();
+        }
 
     }
 
