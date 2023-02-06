@@ -38,7 +38,7 @@ public class TelevisionControllerBonus {
 
     @PostMapping("/televisions")
     public ResponseEntity<Object> addTelevision(@RequestBody String television) {
-        // Bonus bonus: check voor 20 letter:
+        // Bonus bonus: check voor 20 letters:
         if(television.length()>20){
             throw new TelevisionNameTooLongException("Televisienaam is te lang");
         } else {
